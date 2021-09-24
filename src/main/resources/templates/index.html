@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet"
+	href="materialize/css/materialize.min.css" media="screen,projection" />
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+</head>
+<body>
+
+
+	
+  <nav class="nav-wrapper  #00bfa5 teal accent-4">
+  <div class="container">
+      <a href="#!" class="brand-logo">Lista de Eventos</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="/cadastrarEvento"><i class="material-icons left">add</i>Cadastrar Evento</a></li>
+      </ul>
+    </div>
+  </nav>
+	
+			<table class="container">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Loca</th>
+						<th>Data</th>
+						<th>Horario</th>
+						<th>Manutencao</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr th:each="evento : ${eventos}">
+						<td > <a th:href="@{/{codigo}(codigo = ${evento.codigo}) }"><span th:text="${evento.nome}"></span></a></td>
+						<td>
+								<span th:text="${evento.local}"></span>
+
+						</td>
+						<td>
+								<span th:text="${evento.data}"></span>
+
+						</td>
+						<td>
+								<span th:text="${evento.horario}"></span>
+						</td>	
+
+						<td><a th:href="@{/delete/{id}(id=${evento.codigo})}" class="waves-effect"><i class="material-icons center red-text text-darken-2">delete</i></a>
+							
+						
+						</td>
+					</tr>
+				</tbody>
+				
+				
+			</table>
+
+
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>
+</html>
